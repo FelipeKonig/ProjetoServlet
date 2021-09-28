@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,9 +36,13 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adicionaEmpresa(empresa);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/lista-empresas");
-		request.setAttribute("empresa", empresa.getNome());
-		rd.forward(request, response);
+//		redirecionamento client side
+		response.sendRedirect("lista-empresas");
+		
+//		redirecionamento server side		
+//		RequestDispatcher rd = request.getRequestDispatcher("/lista-empresas");
+//		request.setAttribute("empresa", empresa.getNome());
+//		rd.forward(request, response);
 	}
 
 }
