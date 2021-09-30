@@ -43,11 +43,9 @@ public class Banco {
 	}
 
 	public void editaEmpresa(Empresa empresaAtualizada) {
-		for (Empresa empresa : lista) {
-			if (empresa.getId() == empresaAtualizada.getId()) {
-				empresa = empresaAtualizada;
-			}
-		}
+		Empresa empresa = buscaEmpresaPorId(empresaAtualizada.getId());
+		empresa.setNome(empresaAtualizada.getNome());
+		empresa.setDataAbertura(empresa.getDataAbertura());
 	}
 
 	public Empresa buscaEmpresaPorId(Integer id) {

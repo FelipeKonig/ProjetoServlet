@@ -22,7 +22,6 @@ public class MostraEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 
 		Empresa empresa = banco.buscaEmpresaPorId(id);
-		System.out.println(empresa.getNome());
 
 		request.setAttribute("empresa", empresa);
 		RequestDispatcher rq = request.getRequestDispatcher("/form-edita-empresa.jsp");
