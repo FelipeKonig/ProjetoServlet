@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
-
 public class Banco {
 
 	private static List<Empresa> lista = new ArrayList<Empresa>();
@@ -25,7 +23,6 @@ public class Banco {
 	public void adicionaEmpresa(Empresa empresa) {
 		lista.add(empresa);
 		empresa.setId(chaveSequencial + 1);
-		System.out.println("empresa adicionada");
 	}
 
 	public static List<Empresa> getEmpresas() {
@@ -38,11 +35,28 @@ public class Banco {
 
 		while (it.hasNext()) {
 			Empresa empresa = it.next();
-			
+
 			if (empresa.getId() == id) {
 				it.remove();
 			}
 		}
+	}
+
+	public void editaEmpresa(Empresa empresaAtualizada) {
+		for (Empresa empresa : lista) {
+			if (empresa.getId() == empresaAtualizada.getId()) {
+				empresa = empresaAtualizada;
+			}
+		}
+	}
+
+	public Empresa buscaEmpresaPorId(Integer id) {
+		for (Empresa empresa : lista) {
+			if (empresa.getId() == id) {
+				return empresa;
+			}
+		}
+		return null;
 	}
 
 }
